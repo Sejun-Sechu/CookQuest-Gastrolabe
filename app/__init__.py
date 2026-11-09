@@ -1,0 +1,2 @@
+"""CookQuest cooking assessment service."""
+

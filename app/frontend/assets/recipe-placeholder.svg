@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" width="400" height="240">
+  <rect width="400" height="240" fill="#fde6dd"/>
+  <circle cx="200" cy="128" r="74" fill="#ffffff" stroke="#eadfd5" stroke-width="6"/>
+  <circle cx="200" cy="128" r="50" fill="#fdf8f3"/>
+  <rect x="96" y="70" width="8" height="116" rx="4" fill="#c9b8a8"/>
+  <rect x="88" y="70" width="4" height="34" rx="2" fill="#c9b8a8"/>
+  <rect x="108" y="70" width="4" height="34" rx="2" fill="#c9b8a8"/>
+  <path d="M300 70 c18 10 18 50 0 60 v56 h-8 V70 z" fill="#c9b8a8"/>
+  <text x="200" y="226" font-family="Arial" font-size="15" fill="#7a6a60" text-anchor="middle">No photo found for this dish</text>
+</svg>

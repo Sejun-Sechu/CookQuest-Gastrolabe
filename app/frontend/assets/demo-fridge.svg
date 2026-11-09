@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800">
+  <!-- Sample fridge illustration for DEMO MODE -->
+  <defs>
+    <linearGradient id="inside" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#f4f8fb"/>
+      <stop offset="1" stop-color="#dfe8ee"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="800" fill="#c9b8a8"/>
+  <rect x="40" y="30" width="520" height="740" rx="26" fill="#eef1f3" stroke="#b9c3ca" stroke-width="6"/>
+  <rect x="70" y="60" width="460" height="680" rx="12" fill="url(#inside)"/>
+  <circle cx="300" cy="80" r="10" fill="#fff9d8"/>
+
+  <!-- shelves -->
+  <g fill="#cfdbe3" stroke="#aebdc7" stroke-width="2">
+    <rect x="70" y="250" width="460" height="10"/>
+    <rect x="70" y="440" width="460" height="10"/>
+    <rect x="70" y="610" width="460" height="10"/>
+  </g>
+
+  <!-- TOP SHELF: milk, yogurt tub, butter -->
+  <g>
+    <rect x="100" y="110" width="70" height="140" rx="10" fill="#ffffff" stroke="#c6d0d6" stroke-width="3"/>
+    <rect x="115" y="90" width="40" height="24" rx="5" fill="#3b7be0"/>
+    <rect x="108" y="160" width="54" height="34" rx="4" fill="#3b7be0"/>
+    <text x="135" y="183" font-family="Arial" font-size="15" font-weight="bold" fill="#fff" text-anchor="middle">MILK</text>
+
+    <ellipse cx="250" cy="200" rx="52" ry="12" fill="#ffffff" stroke="#c6d0d6" stroke-width="3"/>
+    <path d="M198 200 L206 248 L294 248 L302 200 Z" fill="#fafafa" stroke="#c6d0d6" stroke-width="3"/>
+    <ellipse cx="250" cy="200" rx="52" ry="12" fill="#f0f0f0" stroke="#c6d0d6" stroke-width="3"/>
+
+    <rect x="330" y="205" width="110" height="45" rx="6" fill="#fff3b0" stroke="#d9c25a" stroke-width="3"/>
+    <rect x="345" y="214" width="80" height="12" rx="3" fill="#e6b800"/>
+    <rect x="160" y="170" width="20" height="80" rx="6" fill="#ffffff" opacity=".85"/>
+  </g>
+
+  <!-- MIDDLE SHELF: egg carton, cheddar, red pepper -->
+  <g>
+    <rect x="95" y="370" width="200" height="70" rx="8" fill="#d9c4a5" stroke="#a88f6d" stroke-width="3"/>
+    <g fill="#fbf3e6" stroke="#d7c6aa" stroke-width="2">
+      <ellipse cx="125" cy="368" rx="17" ry="22"/>
+      <ellipse cx="165" cy="368" rx="17" ry="22"/>
+      <ellipse cx="205" cy="368" rx="17" ry="22"/>
+      <ellipse cx="245" cy="368" rx="17" ry="22"/>
+    </g>
+
+    <path d="M320 440 L320 385 L420 355 L420 440 Z" fill="#f7b733" stroke="#c98a12" stroke-width="3"/>
+    <circle cx="350" cy="410" r="6" fill="#e39e1c"/>
+    <circle cx="390" cy="395" r="5" fill="#e39e1c"/>
+
+    <path d="M470 330 C500 330 510 360 505 395 C500 430 480 440 465 440 C450 440 432 430 430 395 C428 360 440 330 470 330 Z" fill="#d7262b" stroke="#a5161b" stroke-width="3"/>
+    <path d="M468 332 C468 318 474 310 482 306" stroke="#3d8b37" stroke-width="7" fill="none" stroke-linecap="round"/>
+    <path d="M452 350 C447 375 448 405 456 425" stroke="#ff6b6b" stroke-width="5" fill="none" opacity=".6"/>
+  </g>
+
+  <!-- BOTTOM SHELF: cherry tomatoes punnet, onion -->
+  <g>
+    <rect x="110" y="560" width="150" height="50" rx="6" fill="#e8f1f6" stroke="#9fb3c0" stroke-width="3"/>
+    <g fill="#e2382f" stroke="#b01f18" stroke-width="2">
+      <circle cx="135" cy="555" r="17"/><circle cx="168" cy="550" r="17"/><circle cx="201" cy="555" r="17"/>
+      <circle cx="234" cy="551" r="17"/><circle cx="152" cy="530" r="16"/><circle cx="218" cy="530" r="16"/>
+    </g>
+    <g fill="#3d8b37"><circle cx="168" cy="536" r="3"/><circle cx="234" cy="537" r="3"/><circle cx="152" cy="516" r="3"/></g>
+
+    <path d="M380 610 C335 610 325 560 350 535 C365 520 395 520 410 535 C435 560 425 610 380 610 Z" fill="#c98b4a" stroke="#8f5a28" stroke-width="3"/>
+    <path d="M380 525 L376 500 M380 525 L388 502" stroke="#8f5a28" stroke-width="4" stroke-linecap="round"/>
+    <path d="M362 545 C355 565 358 590 370 602 M398 545 C405 565 402 590 390 602" stroke="#a87039" stroke-width="2" fill="none"/>
+  </g>
+
+  <!-- CRISPER: spinach bag -->
+  <g>
+    <rect x="80" y="630" width="440" height="100" rx="10" fill="#e3edf2" stroke="#aebdc7" stroke-width="3" opacity=".9"/>
+    <path d="M130 720 L150 640 L320 640 L340 720 Z" fill="#cde8c3" stroke="#7aa86b" stroke-width="3" opacity=".95"/>
+    <g fill="#2f7d32">
+      <ellipse cx="190" cy="680" rx="22" ry="14" transform="rotate(-20 190 680)"/>
+      <ellipse cx="235" cy="690" rx="24" ry="14" transform="rotate(15 235 690)"/>
+      <ellipse cx="280" cy="675" rx="22" ry="13" transform="rotate(-10 280 675)"/>
+      <ellipse cx="215" cy="705" rx="20" ry="12"/>
+      <ellipse cx="265" cy="705" rx="20" ry="12" transform="rotate(25 265 705)"/>
+    </g>
+    <rect x="200" y="648" width="70" height="18" rx="3" fill="#fff" opacity=".9"/>
+    <text x="235" y="662" font-family="Arial" font-size="12" font-weight="bold" fill="#2f7d32" text-anchor="middle">SPINACH</text>
+  </g>
+
+  <text x="300" y="790" font-family="Arial" font-size="14" fill="#5a4a3e" text-anchor="middle">Sample fridge (illustration) - demo mode</text>
+</svg>

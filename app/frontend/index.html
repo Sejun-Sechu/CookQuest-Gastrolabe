@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cut">
+  <meta name="theme-color" content="#080f18">
+  <title>Gastrolabe</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/gastrolabe.css">
+</head>
+<body class="is-home">
+  <div id="demo-banner" class="demo-banner" hidden>
+    <strong>DEMO MODE</strong> &middot; sample photo, ingredients &amp; recipe &mdash; no AI is called
+  </div>
+
+  <header class="topbar">
+    <div class="brand">Gastrolabe</div>
+    <button class="btn small home-link" id="btn-home" aria-label="Go to home">Home</button>
+    <label class="demo-toggle" id="demo-toggle-wrap" hidden>
+      <input type="checkbox" id="demo-toggle"> Demo
+    </label>
+  </header>
+
+  <ol class="steps" aria-label="Progress">
+    <li data-step="scan">Scan</li>
+    <li data-step="review">Ingredients</li>
+    <li data-step="recipe">Recipe</li>
+  </ol>
+
+  <main id="app">
+
+    <section class="screen" id="screen-home">
+      <div class="home-hero">
+        <span class="home-kicker">A CULINARY ATLAS</span>
+        <h1>Gastrolabe</h1>
+        <span class="home-divider" aria-hidden="true"></span>
+        <p class="lead">Start with what's in your fridge.<br>Discover a world of recipes beyond the familiar.</p>
+        <button class="btn primary home-scan" id="btn-scan-fridge" type="button">Scan My Fridge</button>
+        <p class="home-signature">The familiar is only the beginning.</p>
+      </div>
+    </section>
+
+    <section class="screen" id="screen-find" hidden>
+      <span class="eyebrow">YOUR NEXT DISCOVERY</span>
+      <h1>Explore your cooking world.</h1>
+      <p class="lead">Explore source-backed recipes on your Gastrolabe map. Discover new worlds beyond your culinary comfort zone.</p>
+      <p class="hint">Axes are estimates, not verified rarity, live prices or measured cooking times.</p>
+      <p id="catalog-status" role="status"></p>
+      <div id="catalog-list" class="option-list"></div>
+    </section>
+
+    <section class="screen" id="screen-restaurant" hidden>
+      <div class="home-hero"><span class="journey-icon" aria-hidden="true">🌍</span><span class="eyebrow">YOUR NEXT CHAPTER</span><h1>A world of discoveries.</h1><p class="lead">Explore one dish at a time. New cooking experiences await beyond your Zenith.</p><button class="btn primary" id="btn-restaurant-recipes">Find your next recipe</button></div>
+    </section>
+
+    <!-- 2. Scan the fridge -->
+    <section class="screen" id="screen-scan" hidden>
+      <h1>Scan your fridge</h1>
+      <p class="lead">Open the fridge, turn on the light, and get as many shelves in frame as you can.</p>
+
+      <div id="photo-preview" class="photo-preview" hidden>
+        <img id="photo-img" alt="Your fridge photo">
+        <div id="photo-thumbnails" class="photo-thumbnails"></div>
+      </div>
+      <p class="hint" id="photo-count"></p>
+
+      <div class="btn-stack" id="scan-actions">
+        <button class="btn primary" id="btn-choose-photo" type="button">Add a photo</button>
+        <input type="file" accept="image/*" id="input-gallery" multiple hidden>
+        <p class="hint">Choose photos, or use your camera if your device offers it. Up to 4 photos.</p>
+        <button class="btn demo-only" id="btn-sample" hidden>🧪 Use sample fridge photo (demo)</button>
+        <button class="btn link" id="btn-manual">Type ingredients instead</button>
+      </div>
+
+      <div class="btn-stack" id="analyze-actions" hidden>
+        <button class="btn primary" id="btn-analyze">Find my ingredients</button>
+        <button class="btn link" id="btn-repick">Clear selected photos</button>
+      </div>
+
+      <button class="btn link back" data-back="home">← Back</button>
+    </section>
+
+    <!-- 3. Review ingredients -->
+    <section class="screen" id="screen-review" hidden>
+      <h1>Check your ingredients</h1>
+
+      <div id="quality-warning" class="callout warn" hidden>
+        <p id="quality-text"></p>
+        <div class="row">
+          <button class="btn small" id="btn-quality-manual">⌨️ Enter manually</button>
+        </div>
+      </div>
+      <p id="detect-feedback" class="lead"></p>
+
+      <div id="unknown-section" hidden>
+        <h2>Unidentified items</h2>
+        <p class="hint">Tell us what these are, or ignore them. They won't be used unless you name them.</p>
+        <ul class="ingredient-list" id="unknown-list"></ul>
+      </div>
+
+      <div id="flag-summary" class="callout info" hidden></div>
+      <section class="identified-panel" aria-labelledby="identified-title">
+        <h2 id="identified-title">Identified ingredients <span id="ingredient-count"></span></h2>
+        <ul class="ingredient-list" id="ingredient-list"></ul>
+      </section>
+
+      <h2>Additional Ingredients</h2>
+      <form id="ingredient-add-form" class="ingredient-autocomplete" autocomplete="off">
+        <input class="recipe-search" type="text" id="ingredient-search" placeholder="Type an ingredient and press Enter" aria-label="Add an ingredient" maxlength="60" enterkeyhint="done">
+        <div id="ingredient-suggestions" class="ingredient-suggestions" aria-label="Ingredient suggestions" hidden></div>
+      </form>
+      <p class="hint" id="ingredient-selection-status" role="status"></p>
+
+      <div class="sticky-cta">
+        <button class="btn primary" id="btn-generate">Create my recipe</button>
+      </div>
+      <button class="btn link back" data-back="scan">← Back to photo</button>
+    </section>
+
+    <!-- 3b. Need more ingredients -->
+    <section class="screen" id="screen-more" hidden>
+      <h1>A few more ingredients?</h1>
+      <p class="lead" id="more-question"></p>
+      <p class="hint">Tap anything you have, or type it below.</p>
+      <div class="chips" id="more-chips"></div>
+      <form class="add-row" id="more-form" autocomplete="off">
+        <input type="text" id="more-input" placeholder="Something else you have" maxlength="60" aria-label="Add an ingredient">
+        <button class="btn small primary" type="submit">Add</button>
+      </form>
+      <div class="sticky-cta">
+        <button class="btn primary" id="btn-more-generate">Try again with these</button>
+      </div>
+      <button class="btn link back" data-back="review">← Edit full list</button>
+    </section>
+
+    <!-- Loading -->
+    <section class="screen" id="screen-loading" hidden>
+      <div class="loader" aria-hidden="true"><span>🥕</span><span>🧅</span><span>🍅</span></div>
+      <p class="lead center" id="loading-text">Working…</p>
+    </section>
+
+    <!-- 4a. Recipe options -->
+    <section class="screen" id="screen-options" hidden>
+      <p class="lead">Discover your Zenith, then explore new worlds across Price and Effort / Time. You don't need to use everything in your fridge.</p>
+      <p class="hint">Recipes may need up to two additional essential ingredients. Blue-tinted stars need ingredients; check their recipe before cooking.</p>
+      <div class="option-list" id="option-list"></div>
+      <div class="btn-stack">
+        <button class="btn" id="btn-regenerate-options" hidden>Refresh matches</button>
+        <button class="btn link back" data-back="review" aria-label="Back to ingredient confirmation">← Back</button>
+      </div>
+    </section>
+
+    <!-- 4b. Recipe card -->
+    <section class="screen" id="screen-recipe" hidden>
+      <article class="recipe-card" id="recipe-card"></article>
+      <div class="btn-stack">
+        <button class="btn" id="btn-back-options">← Back to recipe options</button>
+        <button class="btn" id="btn-regenerate">Check my ingredients</button>
+        <button class="btn link" id="btn-restart">Start over</button>
+      </div>
+    </section>
+
+    <!-- Error -->
+    <div id="error-box" class="callout error" hidden>
+      <p id="error-text"></p>
+      <div class="row">
+        <button class="btn small primary" id="btn-error-retry" hidden>Retry</button>
+        <button class="btn small" id="btn-error-demo" hidden>Use demo mode</button>
+        <button class="btn small" id="btn-error-dismiss">OK</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="/js/ingredient-inventory.js"></script>
+  <script src="/js/recipe-explorer.js"></script>
+  <script src="/js/journey.js"></script>
+</body>
+</html>

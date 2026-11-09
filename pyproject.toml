@@ -1,0 +1,29 @@
+[project]
+name = "cookquest-assessment"
+version = "0.1.0"
+description = "Fridge-based recipe discovery and personal culinary exploration"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+  "flask>=3.0,<4",
+  "google-genai>=3.0,<4",
+  "httpx>=0.28,<1",
+  "fastapi>=0.121,<1",
+  "uvicorn[standard]>=0.38,<1",
+  "pydantic>=2.12,<3",
+  "pydantic-settings>=2.11,<3",
+  "python-multipart>=0.0.20,<1",
+  "pillow>=12.0,<13",
+]
+
+[build-system]
+requires = ["setuptools>=80"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["app*"]
+
+[tool.setuptools.package-data]
+app = ["frontend/*.html", "frontend/css/*", "frontend/js/*", "frontend/assets/*"]
+"app.gastrolabe" = ["templates/*.html"]
+

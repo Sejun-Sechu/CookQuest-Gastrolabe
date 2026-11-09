@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" class="map-document">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Explore recipes · Gastrolabe</title>
+<link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/gastrolabe.css">
+</head>
+<body class="map-page">
+<section id="zenith-loading" class="world-loading" hidden role="status"><img alt="" width="1280" height="740"><p class="lead">Exploring your culinary world…</p></section>
+<section id="gateway" class="gateway">
+<span class="eyebrow">YOUR STARTING POINT</span>
+<h2>What does cooking look like for you?</h2>
+<p class="lead">Three quick answers help us find your comfort zone. Then explore something new.</p>
+<form id="gateway-form">
+<label for="q1">1. What do you usually make after a busy day?</label>
+<textarea id="q1" rows="2" maxlength="2000" required placeholder="A quick pasta, leftovers, or a meal from scratch…"></textarea>
+<label for="q2">2. What matters most when you buy ingredients?</label>
+<textarea id="q2" rows="2" maxlength="2000" required placeholder="Price, convenience, trying something special…"></textarea>
+<label for="q3">3. Tell us about a cooking success or a tricky moment.</label>
+<textarea id="q3" rows="2" maxlength="2000" required placeholder="Even your first scrambled eggs count."></textarea>
+<p id="gateway-error" role="alert" class="map-error" hidden></p>
+<div class="gateway-actions"><button id="ignite-btn" class="btn primary" type="submit">Find my cooking world →</button><button id="cancel-edit" class="btn" type="button" hidden>Back to map</button></div>
+<p class="hint">Your answers are sent to AI to personalise your map.</p>
+</form></section>
+<section id="map-section" hidden>
+<div class="map-intro"><div><span class="eyebrow">A LITTLE BEYOND THE FAMILIAR</span><h2>Find your next dish.</h2><p class="lead">Click a star to discover its recipe.</p></div></div>
+<div class="map-layout">
+<div class="map-region">
+<div class="map-axes">
+<span class="axis-top">Lower cost</span><span class="axis-bottom">Higher cost</span>
+<span class="axis-left">Quick<br>&amp; simple</span><span class="axis-right">More<br>time</span>
+<div id="sky" class="recipe-sky" aria-label="Recipe map: time increases left to right, cost increases top to bottom">
+<div id="map-plot" class="map-plot"><div id="zenith" class="zenith"><span>✦</span><strong>You</strong></div></div>
+</div></div>
+<div class="map-color-key" aria-label="Star colours"><span><i class="key-ready" aria-hidden="true"></i>Ingredients ready</span><span><i class="key-missing" aria-hidden="true"></i>Needs extra ingredients</span></div>
+<p class="axis-note">← Effort / time → · Cost increases downward<br>Cost and time are estimates; time is a guide to effort.</p>
+</div>
+<aside id="recipe-preview" class="map-preview" role="dialog" aria-labelledby="preview-title" hidden>
+<button id="preview-close" class="preview-close" type="button" aria-label="Close recipe preview">×</button>
+<article id="preview-content" hidden>
+<div class="preview-media"><img id="preview-image" alt="" hidden><div id="preview-fallback">Photo unavailable</div></div>
+<div class="preview-copy"><span id="preview-tag" class="eyebrow">YOUR NEXT DISCOVERY</span><h3 id="preview-title"></h3><p id="preview-meta" class="preview-meta"></p><p id="preview-missing" class="hint"></p>
+<p id="bridge-text" class="bridge-text" aria-live="polite">Select this recipe to see why it could suit you.</p>
+<button id="bridge-retry" class="btn" hidden>Retry personal introduction</button>
+<button id="preview-action" class="btn primary">Explore this recipe →</button>
+<p id="preview-source" class="preview-source"></p>
+</div></article></aside></div></section>
+<script id="map-data" type="application/json">{{ {"cosmos": cosmos, "previews": previews, "profile": profile, "session": session} | tojson }}</script>
+<script src="/js/world-loading.js"></script><script src="/js/gastrolabe.js"></script>
+</body></html>
